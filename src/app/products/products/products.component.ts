@@ -11,15 +11,27 @@ import { Product } from '../product';
 export class ProductsComponent implements OnInit {
 
   products: Product[] = [];
-  displayedColumns: string[] = ['id', 'name'];
+  displayedColumns: string[] = ['id', 'name', 'actions'];
 
   constructor(private service: ProductsService) { }
 
   ngOnInit(): void {
+
     this.service.listAll().subscribe(results => {
       console.log(results);
       this.products = results;
     });
   }
 
+  onAdd(): void {
+    console.log('onAdd');
+  }
+
+  onEdit(product: Product): void {
+    console.log('onEdit', product);
+  }
+
+  onRemove(product: Product): void {
+    console.log('onRemove', product);
+  }
 }
